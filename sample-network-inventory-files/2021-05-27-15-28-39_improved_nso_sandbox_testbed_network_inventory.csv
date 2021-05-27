@@ -1,0 +1,10 @@
+device_name,device_os,software_version,uptime,serial_number
+edge-firewall01,asa,9.12(2),7 days 1 hour,9ACJJ5Q1Q1X
+core-rtr01,iosxr,6.3.1,"1 week, 1 hour, 10 minutes",N/A
+core-rtr02,iosxr,6.3.1,"1 day, 23 hours, 24 minutes",N/A
+dist-rtr01,iosxe,16.11.1b,"1 week, 1 hour, 9 minutes",9Y30J7X5QAC
+dist-rtr02,iosxe,16.11.1b,"1 week, 1 hour, 9 minutes",9741BQ3XSZ5
+dist-sw01,nxos,9.2(3),"7 days, 1 hours, 9 minutes",91FK5ZLK8FF
+dist-sw02,nxos,9.2(3),"7 days, 1 hours, 9 minutes",9CUP5WOOV6M
+edge-sw01,ios,15.2(CML,"4 hours, 52 minutes",N/A
+internet-rtr01,iosxe,16.11.1b,"1 week, 1 hour, 9 minutes",9D6J5QHY2PZ
