@@ -1,0 +1,72 @@
+testbed: 
+  credentials:
+    default:
+      password: '%ASK{}'
+      username: '%ASK{}'
+    enable:
+      password: '%ASK{}'
+
+devices:
+  edge-firewall01:
+    connections:
+      cli:
+        ip: 10.10.20.171
+        protocol: telnet
+    os: asa
+    type: asa
+  core-rtr01:
+    connections:
+      cli:
+        ip: 10.10.20.173
+        protocol: telnet
+    os: iosxr
+    type: iosxr
+  core-rtr02:
+    connections:
+      cli:
+        ip: 10.10.20.174
+        protocol: telnet
+    os: iosxr
+    type: iosxr
+  dist-rtr01:
+    connections:
+      cli:
+        ip: 10.10.20.175
+        protocol: telnet
+    os: iosxe
+    type: iosxe
+  dist-rtr02:
+    connections:
+      cli:
+        ip: 10.10.20.176
+        protocol: telnet
+    os: iosxe
+    type: iosxe
+  dist-sw01:
+    connections:
+      cli:
+        ip: 10.10.20.177
+        protocol: telnet
+    os: nxos
+    type: nxos
+  dist-sw02:
+    connections:
+      cli:
+        ip: 10.10.20.178
+        protocol: telnet
+    os: nxos
+    type: nxos
+  edge-sw01:
+    connections:
+      cli:
+        ip: 10.10.20.172
+        protocol: telnet
+    os: ios
+    type: ios
+  internet-rtr01:
+    connections:
+      cli:
+        ip: 10.10.20.181
+        protocol: telnet
+    os: iosxe
+    type: iosxe
