@@ -1,0 +1,118 @@
+devices:
+  core-rtr01:
+    connections:
+      cli:
+        ip: 10.10.20.173
+        protocol: telnet
+    credentials:
+      default:
+        password: '%ASK{}'
+        username: cisco
+      enable:
+        password: '%ASK{}'
+    os: iosxr
+    type: iosxr
+  core-rtr02:
+    connections:
+      cli:
+        ip: 10.10.20.174
+        protocol: telnet
+    credentials:
+      default:
+        password: '%ASK{}'
+        username: cisco
+      enable:
+        password: '%ASK{}'
+    os: iosxr
+    type: iosxr
+  dist-rtr01:
+    connections:
+      cli:
+        ip: 10.10.20.175
+        protocol: telnet
+    credentials:
+      default:
+        password: '%ASK{}'
+        username: cisco
+      enable:
+        password: '%ASK{}'
+    os: iosxe
+    type: iosxe
+  dist-rtr02:
+    connections:
+      cli:
+        ip: 10.10.20.176
+        protocol: telnet
+    credentials:
+      default:
+        password: '%ASK{}'
+        username: cisco
+      enable:
+        password: '%ASK{}'
+    os: iosxe
+    type: iosxe
+  dist-sw01:
+    connections:
+      cli:
+        ip: 10.10.20.177
+        protocol: telnet
+    credentials:
+      default:
+        password: '%ASK{}'
+        username: cisco
+      enable:
+        password: '%ASK{}'
+    os: nxos
+    type: nxos
+  dist-sw02:
+    connections:
+      cli:
+        ip: 10.10.20.178
+        protocol: telnet
+    credentials:
+      default:
+        password: '%ASK{}'
+        username: cisco
+      enable:
+        password: '%ASK{}'
+    os: nxos
+    type: nxos
+  edge-firewall01:
+    connections:
+      cli:
+        ip: 10.10.20.171
+        protocol: telnet
+    credentials:
+      default:
+        password: '%ASK{}'
+        username: cisco
+      enable:
+        password: '%ASK{}'
+    os: asa
+    type: asa
+  edge-sw01:
+    connections:
+      cli:
+        ip: 10.10.20.172
+        protocol: telnet
+    credentials:
+      default:
+        password: '%ASK{}'
+        username: cisco
+      enable:
+        password: '%ASK{}'
+    os: ios
+    type: ios
+  internet-rtr01:
+    connections:
+      cli:
+        ip: 10.10.20.181
+        protocol: telnet
+    credentials:
+      default:
+        password: '%ASK{}'
+        username: cisco
+      enable:
+        password: '%ASK{}'
+    os: iosxe
+    type: iosxe
