@@ -88,7 +88,7 @@ def get_device_inventory(device, show_version, show_inventory):
     elif device.os == "asa": 
         # RegEx matches for software version and uptime patterns 
         software_version_regex = "Software Version ([^\n ]*)"
-        uptime_regex = f"{device.name} up ([\d]* days [\d]* hours)"
+        uptime_regex = f"{device.name} up ([\d]* days? [\d]* hours?)"
 
         software_version = re.search(software_version_regex, show_version[device.name]["output"]).group(1)
         uptime = re.search(uptime_regex, show_version[device.name]["output"]).group(1)
