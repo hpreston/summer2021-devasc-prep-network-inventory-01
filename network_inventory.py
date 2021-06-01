@@ -11,6 +11,7 @@ Goal:
 from pyats.topology.loader import load
 from genie.libs.parser.utils.common import ParserNotFound
 from genie.metaparser.util.exceptions import SchemaEmptyParserError
+import re
 
 def parse_command(device, command): 
     """
@@ -85,8 +86,12 @@ def get_device_inventory(device, show_version, show_inventory):
             serial_number = module["sn"]
             break
     elif device.os == "asa": 
-        software_version = None
-        uptime = None
+        # RegEx matches for software version and uptime patterns 
+        software_version_regex = "Software Version ([^\n ]*)"
+        uptime_regex = f"{device.name} up ([\d]* days [\d]* hours)"
+
+        software_version = re.search(software_version_regex, show_version[device.name]["output"]).group(1)
+        uptime = re.search(uptime_regex, show_version[device.name]["output"]).group(1)
         serial_number = show_inventory[device.name]["output"]["Chassis"]["sn"]
     else: 
         return False
