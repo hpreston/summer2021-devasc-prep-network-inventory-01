@@ -10,6 +10,7 @@ Goal:
 
 from pyats.topology.loader import load
 from genie.libs.parser.utils.common import ParserNotFound
+from genie.metaparser.util.exceptions import SchemaEmptyParserError
 
 def parse_command(device, command): 
     """
@@ -23,6 +24,8 @@ def parse_command(device, command):
         return {"type": "parsed", "output": output}
     except ParserNotFound: 
         print(f"  Error: pyATS lacks a parser for device {device.name} with os {device.os}. Gathering raw output to return.")
+    except SchemaEmptyParserError: 
+        print(f"  Error: No valid data found from output from device {device.name}. Gathering raw output to return.")
 
     # device.execute runs command, gathers raw output, and returns as string
     output = device.execute(command)
