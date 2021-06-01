@@ -70,7 +70,8 @@ def get_device_inventory(device, show_version, show_inventory):
         # serial_number = show_inventory[device.name]["main"]["chassis"][MODEL]["sn"]
     elif device.os == "nxos": 
         software_version = show_version[device.name]["output"]["platform"]["software"]["system_version"]
-        uptime = show_version[device.name]["output"]["platform"]["kernel_uptime"]
+        uptime_dict = show_version[device.name]["output"]["platform"]["kernel_uptime"]
+        uptime = f'{uptime_dict["days"]} days, {uptime_dict["hours"]} hours, {uptime_dict["minutes"]} minutes'
         serial_number = show_inventory[device.name]["output"]["name"]["Chassis"]["serial_number"]
     elif device.os == "iosxr": 
         software_version = show_version[device.name]["output"]["software_version"]
