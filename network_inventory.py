@@ -31,6 +31,58 @@ def parse_command(device, command):
     output = device.execute(command)
     return {"type": "raw", "output": output}
 
+def get_device_inventory(device, show_version, show_inventory): 
+    """
+    Given a testbed device and the output dictionaries, return the 
+    required network inventory data for the device. Must consider 
+    device OS and address raw/parsed output appropriately.
+
+    return (device_name, device_os, software_version, uptime, serial_number)
+    """
+
+    # Common device details from testbed device
+    device_name = device.name
+    device_os = device.os
+
+    # Build inventory report data structure 
+    #   IOS / IOS XE
+    #     software version: show version output ["output"]["version"]["version"]
+    #     uptime:           show version output ["output"]["version"]["uptime"]
+    #     serial:           show inventory output ["main"]["chassis"][MODEL]["sn"]
+    #   IOS XR
+    #     software version: show version output ["output"]["software_version"]
+    #     uptime:           show version output ["output"]["uptime"]
+    #     serial:           show inventory output ["output"]["module_name"][MODULE]["sn"]
+    #   NXOS 
+    #     software version: show version output ["output"]["platform"]["software"]["system_version"]
+    #     uptime:           show version output ["output"]["platform"]["kernel_uptime"] : 
+    #                                  {'days': 6, 'hours': 20, 'minutes': 48, 'seconds': 59}
+    #     serial:           show inventory output ["output"]["name"]["Chassis"]["serial_number"]
+    #   ASA
+    #     software version: show version RAW output "Cisco Adaptive Security Appliance Software Version 9.12(2)"
+    #     uptime:           show version RAW output "up 6 days 20 hours"
+    #     serial:           show inventory output ["Chassis"]["sn"]
+    
+    if device.os in ["ios", "iosxe"]: 
+        software_version = None
+        uptime = None
+        serial_number = None
+    elif device.os == "nxos": 
+        software_version = None
+        uptime = None
+        serial_number = None
+    elif device.os == "iosxr": 
+        software_version = None
+        uptime = None
+        serial_number = None
+    elif device.os == "asa": 
+        software_version = None
+        uptime = None
+        serial_number = None
+    else: 
+        return False
+
+    return (device_name, device_os, software_version, uptime, serial_number)
 
 # Script entry point
 if __name__ == "__main__": 
@@ -73,6 +125,13 @@ if __name__ == "__main__":
         testbed.devices[device].disconnect()
 
     # Build inventory report data structure 
+    print("Assembling network inventory data from output.")
+    network_inventory = []
+    for device in testbed.devices: 
+        network_inventory.append(
+            get_device_inventory(testbed.devices[device], show_version, show_inventory)
+            )
 
+    print(f"network_inventory = {network_inventory}")
 
     # Generate CSV file of data
