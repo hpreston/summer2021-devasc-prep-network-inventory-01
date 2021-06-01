@@ -104,7 +104,7 @@ def get_device_inventory(device, show_version, show_inventory):
 if __name__ == "__main__": 
     import argparse
 
-    print("Creating a network inventory script.")
+    # print("Creating a network inventory script.")
 
     # Load pyATS testbed into script 
     # Use argparse to determine the testbed file : https://docs.python.org/3/library/argparse.html
@@ -128,11 +128,11 @@ if __name__ == "__main__":
     for device in testbed.devices: 
         print(f"Gathering show version from device {device}")
         show_version[device] = parse_command(testbed.devices[device], "show version")
-        print(f"{device} show version: {show_version[device]}")
+        # print(f"{device} show version: {show_version[device]}")
 
         print(f"Gathering show inventory from device {device}")
         show_inventory[device] = parse_command(testbed.devices[device], "show inventory")
-        print(f"{device} show inventory: {show_inventory[device]}")
+        # print(f"{device} show inventory: {show_inventory[device]}")
 
 
     # Disconnect from network devices 
@@ -148,7 +148,7 @@ if __name__ == "__main__":
             get_device_inventory(testbed.devices[device], show_version, show_inventory)
             )
 
-    print(f"network_inventory = {network_inventory}")
+    # print(f"network_inventory = {network_inventory}")
 
     # Generate CSV file of data
     now = datetime.now()
