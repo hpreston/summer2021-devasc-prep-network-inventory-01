@@ -23,14 +23,21 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     # Create pyATS testbed object
+    print(f"Loading testbed file {args.testbed}")
     testbed = load(args.testbed)
 
     # Connect to network devices 
-    testbed.connect()
+    testbed.connect(log_stdout=False)
+    print(f"Connecting to all devices in testbed {testbed.name}")
 
 
     # Run commands to gather output from devices 
 
+
+    # Disconnect from network devices 
+    for device in testbed.devices: 
+        print(f"Disconnecting from device {device}.")
+        testbed.devices[device].disconnect()
 
     # Build inventory report data structure 
 
