@@ -9,6 +9,25 @@ Goal:
 """
 
 from pyats.topology.loader import load
+from genie.libs.parser.utils.common import ParserNotFound
+
+def parse_command(device, command): 
+    """
+    Attempt to parse a command on a device with pyATS.
+    In case of common errors, return best info possible.
+    """
+
+    print(f"Running command {command} on device {device.name}")
+    try: 
+        output = device.parse(command)
+        return {"type": "parsed", "output": output}
+    except ParserNotFound: 
+        print(f"  Error: pyATS lacks a parser for device {device.name} with os {device.os}. Gathering raw output to return.")
+
+    # device.execute runs command, gathers raw output, and returns as string
+    output = device.execute(command)
+    return {"type": "raw", "output": output}
+
 
 # Script entry point
 if __name__ == "__main__": 
@@ -25,7 +44,7 @@ if __name__ == "__main__":
     # Create pyATS testbed object
     print(f"Loading testbed file {args.testbed}")
     testbed = load(args.testbed)
-    
+
     # Connect to network devices 
     testbed.connect(log_stdout=False)
     print(f"Connecting to all devices in testbed {testbed.name}")
@@ -37,11 +56,11 @@ if __name__ == "__main__":
 
     for device in testbed.devices: 
         print(f"Gathering show version from device {device}")
-        show_version[device] = testbed.devices[device].parse("show version")
+        show_version[device] = parse_command(testbed.devices[device], "show version")
         print(f"{device} show version: {show_version[device]}")
 
         print(f"Gathering show inventory from device {device}")
-        show_inventory[device] = testbed.devices[device].parse("show inventory")
+        show_inventory[device] = parse_command(testbed.devices[device], "show inventory")
         print(f"{device} show inventory: {show_inventory[device]}")
 
 
