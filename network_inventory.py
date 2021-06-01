@@ -66,8 +66,12 @@ def get_device_inventory(device, show_version, show_inventory):
     if device.os in ["ios", "iosxe"]: 
         software_version = show_version[device.name]["output"]["version"]["version"]
         uptime = show_version[device.name]["output"]["version"]["uptime"]
-        serial_number = None
-        # serial_number = show_inventory[device.name]["main"]["chassis"][MODEL]["sn"]
+        # Skip devices without parsed show inventory data 
+        if show_inventory[device.name]["output"] != "": 
+            chassis_name = show_version[device.name]["output"]["version"]["chassis"]
+            serial_number = show_inventory[device.name]["output"]["main"]["chassis"][chassis_name]["sn"]
+        else: 
+            serial_number = "N/A"
     elif device.os == "nxos": 
         software_version = show_version[device.name]["output"]["platform"]["software"]["system_version"]
         uptime_dict = show_version[device.name]["output"]["platform"]["kernel_uptime"]
@@ -76,8 +80,10 @@ def get_device_inventory(device, show_version, show_inventory):
     elif device.os == "iosxr": 
         software_version = show_version[device.name]["output"]["software_version"]
         uptime = show_version[device.name]["output"]["uptime"]
-        serial_number = None
-        # serial_number = show_inventory[device.name]["output"]["module_name"][MODULE]["sn"]
+        # Grab the serial from first module - should be the RP 
+        for module in show_inventory[device.name]["output"]["module_name"].values(): 
+            serial_number = module["sn"]
+            break
     elif device.os == "asa": 
         software_version = None
         uptime = None
