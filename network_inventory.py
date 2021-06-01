@@ -12,6 +12,8 @@ from pyats.topology.loader import load
 from genie.libs.parser.utils.common import ParserNotFound
 from genie.metaparser.util.exceptions import SchemaEmptyParserError
 import re
+import csv
+from datetime import datetime
 
 def parse_command(device, command): 
     """
@@ -149,3 +151,12 @@ if __name__ == "__main__":
     print(f"network_inventory = {network_inventory}")
 
     # Generate CSV file of data
+    now = datetime.now()
+    inventory_file = f'{now.strftime("%Y-%m-%d-%H-%M-%S")}_{testbed.name}_network_inventory.csv'
+    print(f'Writing inventory to file {inventory_file}.')
+    with open(inventory_file, 'w', newline='') as csvfile:
+        inv_writer = csv.writer(csvfile, dialect="excel")
+        # Write header row
+        inv_writer.writerow(("device_name", "device_os", "software_version", "uptime", "serial_number"))
+        for device in network_inventory: 
+            inv_writer.writerow(device)
