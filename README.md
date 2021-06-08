@@ -11,6 +11,8 @@ If you'd like to explore the solution to the above use case yourself, here is ev
 ### Lab/Sandbox Resources 
 This example leverages the [Cisco NSO Reservable Sandbox from DevNet](https://devnetsandbox.cisco.com/RM/Diagram/Index/43964e62-a13c-4929-bde7-a2f68ad6b27c?diagramType=Topology).  You can reserve this sandbox for use with the [nso_sandbox_devices.xlsx](nso_sandbox_devices.xlsx) inventory spreadsheet.  
 
+The network topology for the Sandbox can be seen with this [network diagram](NSO-Sandbox-Lab-Network-Topology.jpg).
+
 If you have your own lab you'd like to try the network inventory script on, you will need to create your own inventory spreadsheet for your lab.  This use case shoudl support devices running Cisco IOS, IOS XE, IOS XR, NX-OS and ASA. 
 
 ### Creating the Python venv 
