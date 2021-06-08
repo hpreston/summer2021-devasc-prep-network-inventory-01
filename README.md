@@ -4,6 +4,8 @@
 
 This repository provides code and examples as part of a [DevNet Associate Certification Preparation Webinar Series](https://learningnetwork.cisco.com/s/article/devnet-associate-prep-program-in-one-place). The recording for this webinar, and others, can be found in the [DevNet Associate Prep Program Training Plan](https://learningnetwork.cisco.com/s/learning-plan-detail-standard?ltui__urlRecordId=a1c3i0000007q9cAAA&ltui__urlRedirect=learning-plan-detail-standard&t=1596603514739).
 
+Slides from the webinar and discussions about the topic can be found in this [forum post from the Learning Network](https://learningnetwork.cisco.com/s/question/0D53i00001GCgmSCAT/devnet-associate-prep-automating-a-network-inventory-with-python?t=1623087847018).
+
 ### Automating a Network Inventory with Python
 
 > It’s 3pm on Friday. You are already looking forward to your weekend and bingeing the latest season of your favorite show that just dropped. Your boss shows up and tells you he needs a full network inventory by Monday at 8am. He apologizes for ruining your weekend as he heads out to a concert. Can your newly learned network automation skills save your weekend?
