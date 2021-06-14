@@ -55,14 +55,41 @@ The [`network_inventory.py`](network_inventory.py) script in the repo should wor
 > Note: The sandbox credentials for devices are `cisco / cisco`
 
 ```
-./network_inventory.py
+./network_inventory.py improved_nso_sandbox_testbed.yaml
+
 # OUTPUT
 Loading testbed file improved_nso_sandbox_testbed.yaml
 Connecting to all devices in testbed improved_nso_sandbox_testbed
-Gathering show version from device edge-firewall01 Running command show version on device edge-firewall01
-Error: pyATS lacks a parser for device edge-firewall01 with os asa. Gathering raw output to return.
-Gathering show inventory from device edge-firewall01 Running command show inventory on device edge-firewall01 Gathering show version from device core-rtr01
-Running command show version on device core-rtr01 Gathering show inventory from device core-rtr01 Running command show inventory on device core-rtr01 Disconnecting from device edge-firewall01. Disconnecting from device core-rtr01.
+Gathering show version from device edge-firewall01
+Running command show version on device edge-firewall01
+  Error: pyATS lacks a parser for device edge-firewall01 with os asa. Gathering raw output to return.
+Gathering show inventory from device edge-firewall01
+Running command show inventory on device edge-firewall01
+Gathering show version from device dist-rtr01
+Running command show version on device dist-rtr01
+Gathering show inventory from device dist-rtr01
+Running command show inventory on device dist-rtr01
+Gathering show version from device dist-rtr02
+Running command show version on device dist-rtr02
+Gathering show inventory from device dist-rtr02
+Running command show inventory on device dist-rtr02
+Gathering show version from device dist-sw01
+Running command show version on device dist-sw01
+Gathering show inventory from device dist-sw01
+Running command show inventory on device dist-sw01
+Gathering show version from device dist-sw02
+Running command show version on device dist-sw02
+Gathering show inventory from device dist-sw02
+Running command show inventory on device dist-sw02
+Gathering show version from device edge-sw01
+Running command show version on device edge-sw01
+Gathering show inventory from device edge-sw01
+Running command show inventory on device edge-sw01
+  Error: No valid data found from output from device edge-sw01. Gathering raw output to return.
+Gathering show version from device internet-rtr01
+Running command show version on device internet-rtr01
+Gathering show inventory from device internet-rtr01
+Running command show inventory on device internet-rtr01
 Assembling network inventory data from output.
 Writing inventory to file 2021-05-27-15-41- 13_improved_nso_sandbox_testbed_network_inventory.csv.
 ```
